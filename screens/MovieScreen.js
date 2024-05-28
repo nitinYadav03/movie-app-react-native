@@ -65,6 +65,7 @@ const MovieScreen = () => {
     >
       <View className="w-full">
         <SafeAreaView
+        style={{marginTop: ios ? '' : 35, padding: ios ? '' : 10}}
           className={
             'absolute z-20 w-full flex-row justify-between items-center px-4' +
             topMargin

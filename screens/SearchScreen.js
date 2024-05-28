@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Image,
   Dimensions,
+  Platform,
 } from 'react-native';
 import React, { useCallback, useState } from 'react';
 import { XMarkIcon } from 'react-native-heroicons/outline';
@@ -17,6 +18,7 @@ import { debounce } from 'lodash';
 import { fallbackMoviePoster, fetchSearchMovies, image185 } from '../api/moviedb';
 
 var { width, height } = Dimensions.get('window');
+const ios = Platform.OS == 'ios';
 
 const SearchScreen = () => {
   const navigation = useNavigation();
@@ -53,7 +55,7 @@ const SearchScreen = () => {
   const handleTextDebounce = useCallback(debounce(handleSearch, 500), [])
 
   return (
-    <SafeAreaView className="bg-neutral-800 flex-1">
+    <SafeAreaView style={{paddingTop: ios ? '' : 45, padding: ios ? '' : 10}} className="bg-neutral-800 flex-1">
       <View className="mx-4 mb-3 flex-row justify-between items-center border border-neutral-500 rounded-full">
         <TextInput
           onChangeText={handleTextDebounce}

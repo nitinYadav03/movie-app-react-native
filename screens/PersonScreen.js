@@ -52,6 +52,7 @@ const PersonScreen = () => {
       contentContainerStyle={{ paddingBottom: 20 }}
     >
       <SafeAreaView
+      style={{marginTop: ios ? '' : 35, padding: ios ? '' : 10}}
         className={
           'z-20 w-full flex-row justify-between items-center px-4' +
           verticalMargin
