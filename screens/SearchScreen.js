@@ -55,7 +55,7 @@ const SearchScreen = () => {
   const handleTextDebounce = useCallback(debounce(handleSearch, 500), [])
 
   return (
-    <SafeAreaView style={{paddingTop: ios ? '' : 45, padding: ios ? '' : 10}} className="bg-neutral-800 flex-1">
+    <SafeAreaView style={{paddingTop: ios ? '' : 45}} className="bg-neutral-800 flex-1">
       <View className="mx-4 mb-3 flex-row justify-between items-center border border-neutral-500 rounded-full">
         <TextInput
           onChangeText={handleTextDebounce}
