@@ -15,7 +15,7 @@ import { ChevronLeftIcon } from 'react-native-heroicons/outline';
 import { HeartIcon } from 'react-native-heroicons/solid';
 import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
-import { fetchPersonDetails, fetchPersonMovies, image342 } from '../api/moviedb';
+import { fallbackPersonImage, fetchPersonDetails, fetchPersonMovies, image342 } from '../api/moviedb';
 
 var { width, height } = Dimensions.get('window');
 const ios = Platform.OS == 'ios';
@@ -87,11 +87,13 @@ const PersonScreen = () => {
             }}
           >
             <View className="items-center rounded-full overflow-hidden h-72 w-72 border-2 border-neutral-500">
-              <Image
-                // source={require('../images/tom.jpeg')}
-                source={{ uri: image342(person?.profile_path) }}
+              {image342(person?.profile_path) ? <Image
+                source={{ uri: image342(person?.profile_path)}}
                 style={{ height: height * 0.43, width: width * 0.74 }}
-              />
+              /> : <Image
+              source={{ uri: fallbackPersonImage }}
+              style={{ height: height * 0.43, width: width * 0.74 }}
+            /> }
             </View>
           </View>
 
